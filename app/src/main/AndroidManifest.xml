@@ -11,13 +11,15 @@
         android:theme="@style/Theme.Notes">
         <activity android:name=".activity.NoteDetailsActivity"></activity>
         <activity android:name=".activity.SplashActivity">
+
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

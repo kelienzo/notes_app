@@ -1,0 +1,37 @@
+package com.kelly.notes
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.kelly.notes.databinding.NoteListBinding
+import com.kelly.notes.models.Note
+
+class NoteAdapter(private val notes: List<Note>) :
+    RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+
+    inner class NoteViewHolder(val binding: NoteListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun setNote(note: Note) {
+            binding.apply {
+                idDisplay.text = note.id.toString()
+                titleDisplay.text = note.title
+            }
+
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+        val binding: NoteListBinding = NoteListBinding.inflate(LayoutInflater.from(parent.context))
+        return NoteViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+        val note = notes[position]
+        holder.setNote(note)
+    }
+
+    override fun getItemCount(): Int {
+        return notes.size
+    }
+}
