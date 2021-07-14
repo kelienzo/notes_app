@@ -25,9 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //instantiating database
-        database =
-            Room.databaseBuilder(applicationContext, NoteDataBase::class.java, "notes_database")
-                .allowMainThreadQueries().build()
+        database = NoteDataBase.getInstance(applicationContext)
+
 
         //instantiating viewModel
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
@@ -60,7 +59,5 @@ class MainActivity : AppCompatActivity() {
     private fun saveNote(title: String, content: String) {
         val note = Note(id = 0, title, content)
         viewModel.addNote(database, note)
-        database.noteDao().addNote(note)
-        noteAdapter.notifyDataSetChanged()
     }
 }
